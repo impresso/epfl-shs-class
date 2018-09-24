@@ -22,10 +22,10 @@ Data is in the form of `bz2` archives. These archives are on a journal-year basi
 
 Each article contains more information that what you need so it is a good idea to filter out things and get a version of what interests you only. In the folder where you have the archives, execute the following command:
 
-`for f in *.bz2; do bzcat $f | jq -c '{id: .id, type: .tp, date: .d, title: .t, fulltext: .ft}' > "${f%.jsonl.bz2}-reduced.jsonl.bz2"`
+`for f in *[0-9].jsonl.bz2; do bzcat $f | jq -c '{id: .id, type: .tp, date: .d, title: .t, fulltext: .ft}' | bzip2 > "${f%.jsonl.bz2}-reduced.jsonl.bz2" ; done`
 
 what does the command do:
-- iterate over the files having the suffix `bz2` (each file lies in the variable `$f`)
+- iterate over the files having the suffix `.jsonl.bz2` preceded by a number (each file lies in the variable `$f`)
 - open the archive (`bzcat`) and produce a stream of json
 - send (pipe `|`) this stream into `jq` 
 - apply some filtering on the json content
