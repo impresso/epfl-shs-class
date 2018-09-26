@@ -61,6 +61,12 @@ Conda already installs by default Jupyter when you create an environment.
 To launch a notebook, just execute this in your activated env:
 `jupyter notebook`
 
+### Starting working with the data
+
+We've put a jupyter notebook in this repo ([Example.ipynb](https://github.com/impresso/epfl-shs-class/blob/master/Example.ipynb)) where you can get an idea where to start.
+
+If you want to use Iramuteq, you will have to isolate the textual parts and print them as specified [here](http://www.iramuteq.org/documentation/formatage-des-corpus-texte).
+
 
 
 
