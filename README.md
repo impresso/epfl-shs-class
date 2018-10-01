@@ -18,6 +18,8 @@ Important: put a password on your key
 
 ## Part 2 - How to transform it
 
+**NB**: before reading further, install [`jq`](https://github.com/stedolan/jq/wiki/Installation), in case it's not yet installed on your system.
+
 Data is in the form of `bz2` archives. These archives are on a journal-year basis, and contains newspaper articles, which have been 'rebuilt' from the OCR output. The format is `json-lines`: each line is a json object, i.e. an article.
 
 Each article contains more information that what you need so it is a good idea to filter out things and get a version of what interests you only. In the folder where you have the archives, execute the following command:
