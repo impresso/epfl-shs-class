@@ -1,20 +1,33 @@
 # epfl-shs-class
-Set of instructions for using data in the frame of EPFL SHS class
+
+Set of instructions for using data in the frame of EPFL SHS class.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/impresso/epfl-shs-class/2019-update?filepath=Example.ipynb)
 
 ## Part 1 - How to get the data
 
 1. **Read and sign the NDA**, and give it back to the teachers.
 
-2. **Generate a ssh-key**, following these [instructions](https://www.ssh.com/ssh/keygen/), and send the content of the `.ssh/id_rsa.pub` file to the teachers.
-Important: put a password on your key
+2. **To get your credentials on SwitchEngine**:
 
-3. Once you receive the green light, **download the data**
-     - open a  terminal and go to the repository where you want to download the data
-     - `sftp impresso@dhlabsrv4.epfl.ch` => connect to the server via sftp (more instructions [here](https://www.tecmint.com/sftp-command-examples/)) 
-     - `cd sharespace` => go in the folder where the data is
-     - `ll`  => to see what is there
-     - `mget *.bz2` to get all file ending with `.bz2`
-     - `exit` to exit the server
+  - communicate your email address to your professors
+  - you will then receive by email a voucher (invitation) to join the `impresso-teaching` project, which contains the S3 bucket with the impresso data.
+  - following the link in the invitation you will be able to create an account, and this will give you EC2 credentials (access key and secret key)
+  - further links to Switch documentation:
+    - https://help.switch.ch/eduid/switchdrive-with-edu-id/
+    - https://help.switch.ch/engines/documentation/s3-like-object-storage/
+
+
+3. **Install `s3cmd`**
+  - with `brew`on Mac OS
+  - with `sudo apt-get install s3cmd` on e.g. Ubuntu
+  - configure it
+    - copy the file `.s3cfg` in this repo to your home (e.g. `~/`)
+    - add access_key and secret_key to `.s3cfg`
+    - type `s3cmd ls`: you should get a list of all buckets in the project
+
+4. **Download the data**
+  - ```s3cmd get s3://impresso-data/* ~/home/impresso-data/```
 
 ## Part 2 - How to transform it
 
@@ -29,15 +42,15 @@ Each article contains more information that what you need so it is a good idea t
 what does the command do:
 - iterate over the files having the suffix `.jsonl.bz2` preceded by a number (each file lies in the variable `$f`)
 - open the archive (`bzcat`) and produce a stream of json
-- send (pipe `|`) this stream into `jq` 
+- send (pipe `|`) this stream into `jq`
 - apply some filtering on the json content
 - send the output to a file which name is composed of the input file, completed with `-reduced`
 
 You will now on work with the archives `-reduced.jsonl.bz2`. You can delete the others.
 
-## Part 3 - Setting up your working environement 
+## Part 3 - Setting up your working environment
 
-### Python environment 
+### Python environment
 
 1. Download [Anaconda](https://www.anaconda.com/distribution/) in order to get the Conda environement manager.
 2. Familiarize yourself with [Conda](https://conda.io/docs/user-guide/getting-started.html)
@@ -56,9 +69,9 @@ conda remove --name NAME --all => remove environment 'NAME'
 
 ### Working with Jupyter notebook
 
-What it is: see this [tutorial](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) 
+What it is: see this [tutorial](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook)
 
-Conda already installs by default Jupyter when you create an environment. 
+Conda already installs by default Jupyter when you create an environment.
 
 To launch a notebook, just execute this in your activated env:
 `jupyter notebook`
@@ -68,18 +81,3 @@ To launch a notebook, just execute this in your activated env:
 We've put a jupyter notebook in this repo ([Example.ipynb](https://github.com/impresso/epfl-shs-class/blob/master/Example.ipynb)) where you can get an idea where to start.
 
 If you want to use Iramuteq, you will have to isolate the textual parts and print them as specified [here](http://www.iramuteq.org/documentation/formatage-des-corpus-texte).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
