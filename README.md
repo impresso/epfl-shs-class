@@ -58,6 +58,7 @@ You will now on work with the archives `-reduced.jsonl.bz2`. You can delete the 
 `conda create -n NAME python=3.6` where NAME is the name you want to give to the environement (e.g. digital-history)
 4. Activate it:
 `source activate NAME`
+5. install dependencies with `pip install -r requirements.txt`
 
 Useful commands (and more info [here](https://conda.io/docs/user-guide/tasks/manage-environments.html)):
 
