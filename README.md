@@ -2,8 +2,6 @@
 
 Set of instructions for using data in the frame of EPFL SHS class.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/impresso/epfl-shs-class/2019-update?filepath=Example.ipynb)
-
 ## Part 1 - How to get the data
 
 1. **Read and sign the NDA**, and give it back to the teachers.
