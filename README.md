@@ -14,9 +14,14 @@ Set of instructions for using data in the frame of EPFL SHS class.
   - further links to Switch documentation:
     - https://help.switch.ch/eduid/switchdrive-with-edu-id/
     - https://help.switch.ch/engines/documentation/s3-like-object-storage/
+    
+3. **Retrieve EC2 credentials (for use with `s3cmd`)**
+  - go to https://engines.switch.ch/ and authenticate with your credentials
+  - from the menu on the left select Project >> API Access
+  - click on "View credentials"
+  - copy the fields `EC2 Access Key` and `EC2 Secret Key` into your `.s3cfg` config file (see below)
 
-
-3. **Install `s3cmd`**
+4. **Install `s3cmd`**
   - with `brew`on Mac OS
   - with `sudo apt-get install s3cmd` on e.g. Ubuntu
   - configure it
@@ -24,7 +29,7 @@ Set of instructions for using data in the frame of EPFL SHS class.
     - add access_key and secret_key to `.s3cfg`
     - type `s3cmd ls`: you should get a list of all buckets in the project
 
-4. **Download the data**
+5. **Download the data**
   - ```s3cmd get s3://impresso-data/* ~/home/impresso-data/```
 
 ## Part 2 - How to transform it
